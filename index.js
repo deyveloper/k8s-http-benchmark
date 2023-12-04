@@ -14,7 +14,21 @@ const doJob = async () => {
   for (let i = 0; i < REQUESTS_COUNT; i++) {
     await sleep(WAIT_TIME)
     total++;
-    axios.get(ENDPOINT).then((e) => {
+    axios.get(ENDPOINT, {
+      params: {
+        transactions: new Array(Number(process.env.NUM_OF_TR || '100')).fill({
+          hello: 'world',
+          test: '123',
+          myNameIs: 'annasun',
+          exo: 'ho du esh ches',
+          testing_num: 123,
+          semantic: 'release',
+          node: 'js',
+          transaction_id: '1231',
+          fixed_: 123
+        })
+      }
+    }).then((e) => {
       success++;
     }).catch(e => {
       error++;

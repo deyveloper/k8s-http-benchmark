@@ -7,9 +7,12 @@ const INTERVAL = Number(process.env.RQEUESTS_INTERVAL || '60000');
 let total = 0;
 let success = 0;
 let error = 0;
+const WAIT_TIME = Math.floor(INTERVAL / REQUESTS_COUNT);
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const doJob = async () => {
   for (let i = 0; i < REQUESTS_COUNT; i++) {
+    await sleep(WAIT_TIME)
     total++;
     axios.get(ENDPOINT).then((e) => {
       success++;

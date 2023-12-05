@@ -32,7 +32,7 @@ const doJob = async () => {
       success++;
     }).catch(e => {
       error++;
-      console.error(e);
+      // console.error(e);
     });
   }
 }
